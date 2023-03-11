@@ -9,7 +9,6 @@ const customStyles = {
     transform: 'translate(-40%, -40%)',
   },
 };
-Modal.setAppElement('#root');
 
 const EditMember = ({data, editMember, open, close })=>{
 
@@ -28,9 +27,9 @@ const EditMember = ({data, editMember, open, close })=>{
     contentLabel="Edit Member"
   >
     <form onSubmit={handleSubmit}>
-      name : <input name="name" defaultValue={data.name} />
+      name : <input name="name" defaultValue={data?.name} />
       <br/>
-      email : <input name="email" defaultValue={data.email} type="email" />
+      email : <input name="email" defaultValue={data?.email} type="email" />
       <br />
       role : <input name="role" id="member" type="radio" defaultChecked={data?.role==='member'} /><label for="member">Member</label><input name="role" id="admin" type="radio" defaultChecked={data?.role==='admin'} /><label for="admin">Admin</label>
       <br/><br />

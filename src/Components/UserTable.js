@@ -17,7 +17,14 @@ const[open,setOpen] = useState(null);
 return <StyledTable>
   <thead >
   <tr>
-    <th ></th>
+    <th ><input type="checkbox"
+        checked={selectedMembers?.length===members?.length}
+        onChange={e=>{
+          if(e.target.checked){
+            setSelectedMembers(members?.map(member=>member?.index));
+          }
+          else setSelectedMembers([]);
+        }} /></th>
     <th >Name</th>
     <th >Email</th>
     <th >Role</th>
