@@ -1,3 +1,9 @@
+# Added Like dislike feature:
+1. Add like dislike feature. Where user can see and give like or dislike as feature.
+2. One user cannot like more than once.
+3. Plus point maintain session and persist data on page refresh.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

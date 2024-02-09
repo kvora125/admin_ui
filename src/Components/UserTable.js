@@ -12,7 +12,7 @@ thead tr th,tbody tr td{
 }
 `;
 
-const UserTable = ({members, editMember, deleteMember, setSelectedMembers, selectedMembers,currentPageIndex })=>{
+const UserTable = ({members, editMember, deleteMember, setSelectedMembers, selectedMembers,currentPageIndex, like, dislike,likes,dislikes,user })=>{
 const[open,setOpen] = useState(null);
 return <StyledTable>
   <thead >
@@ -28,6 +28,8 @@ return <StyledTable>
     <th >Name</th>
     <th >Email</th>
     <th >Role</th>
+    <th >likes</th>
+    <th >dislikes</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -51,7 +53,14 @@ return <StyledTable>
       <td >{member?.name}</td>
       <td >{member?.email}</td>
       <td >{member?.role}</td>
-      <td ><button onClick={()=>setOpen(member?.index)}><img src={editIcon} alt="Edit" style={{height:"20px"}} /></button>{' '}<button onClick={()=>deleteMember(member?.index)}><img src={deleteIcon} alt="Delete" style={{height:"20px"}} /></button></td>
+      <td >{likes?.[member?.email]?.length || 0}</td>
+      <td >{dislikes?.[member?.email]?.length ||0}</td>
+      <td >
+        <button onClick={()=>like(member?.index)} disabled={(likes?.[member?.email]?.includes(user)|| dislikes?.[member?.email]?.includes(user) )}>Like</button>{' '}
+        <button onClick={()=>dislike(member?.index)} disabled={(dislikes?.[member?.email]?.includes(user) || likes?.[member?.email]?.includes(user) )}>Dislike</button>{' '}
+        <button onClick={()=>setOpen(member?.index)}><img src={editIcon} alt="Edit" style={{height:"20px"}} /></button>{' '}
+        <button onClick={()=>deleteMember(member?.index)}><img src={deleteIcon} alt="Delete" style={{height:"20px"}} /></button>
+      </td>
     </tr></>))}
   </tbody>
 </StyledTable>;
